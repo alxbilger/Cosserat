@@ -107,15 +107,7 @@ if(SoftRobots_FOUND)
 endif()
 
 sofa_install_pythonscripts(PLUGIN_NAME ${PROJECT_NAME} PYTHONSCRIPTS_SOURCE_DIR "python")
-
-find_file(SofaPython3Tools NAMES "SofaPython3/lib/cmake/SofaPython3/SofaPython3Tools.cmake")
-if(SofaPython3Tools)
-    message("-- Found SofaPython3Tools.")
-    include(${SofaPython3Tools})
-else()
-    # try again with the find_package mechanism
-    find_package(SofaPython3 QUIET)
-endif()
+find_package(SofaPython3 QUIET)
 if(SofaPython3Tools OR SofaPython3_FOUND)
     message("-- Python3 packages will be installed.")
     set(SP3_PYTHON_PACKAGES_DIRECTORY "python3/site-packages")
@@ -125,8 +117,6 @@ if(SofaPython3Tools OR SofaPython3_FOUND)
     # )
     add_subdirectory(${SRC_ROOT_DIR}/Binding)
 endif()
-
-#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/CosseratPlugin/Binding)
 
 ## Install rules for the library and headers; CMake package configurations files
 sofa_create_package_with_targets(
