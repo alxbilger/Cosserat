@@ -25,4 +25,5 @@ SP3_add_python_module(
     DEPENDS      SofaPython3::Plugin SofaPython3::Bindings Sofa.GL CosseratPlugin
 
 )
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 message("-- SofaPython3 bindings for CosseratPlugin will be created.")
